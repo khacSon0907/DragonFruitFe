@@ -1,12 +1,12 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import "./Header.scss";
 
 const navItems = [
-  { label: "Trang chủ", href: "#" },
-  { label: "Dự đoán giá", href: "#predict" },
-  { label: "Thống kê", href: "#stats" },
-  { label: "Liên hệ", href: "#contact" },
+  { label: "Trang chủ", to: "/" },
+  { label: "Dự đoán giá", to: "/du-doan" },
+  { label: "Thống kê", to: "/thong-ke" },
+  { label: "Liên hệ", to: "/lien-he" },
 ];
 
 export default function Header() {
@@ -15,19 +15,25 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <a href="#" className="header__brand">
+        <NavLink to="/" className="header__brand">
           <img src={logo} alt="Logo Thanh Long" className="header__logo" />
           <div className="header__title">
             <h1>Thanh Long Bình Thuận</h1>
             <span>Hệ thống dự đoán giá</span>
           </div>
-        </a>
+        </NavLink>
 
         <nav className="header__nav">
           <ul>
             {navItems.map((item) => (
               <li key={item.label}>
-                <a href={item.href}>{item.label}</a>
+                <NavLink
+                  to={item.to}
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -48,9 +54,13 @@ export default function Header() {
         <ul>
           {navItems.map((item) => (
             <li key={item.label}>
-              <a href={item.href} onClick={() => setIsMenuOpen(false)}>
+              <NavLink
+                to={item.to}
+                className={({ isActive }) => (isActive ? "active" : "")}
+                onClick={() => setIsMenuOpen(false)}
+              >
                 {item.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>

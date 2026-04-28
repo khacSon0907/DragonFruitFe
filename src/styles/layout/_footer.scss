@@ -1,0 +1,94 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.footer {
+  background-color: v.$footer-bg;
+  color: v.$footer-text;
+  padding-top: v.$space-2xl;
+
+  &__container {
+    @include m.container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: v.$space-xl;
+    padding-bottom: v.$space-xl;
+
+    @include m.respond-to(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-md;
+
+    img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.9;
+    }
+
+    p {
+      color: v.$footer-text;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+  }
+
+  &__links {
+    h4 {
+      color: v.$bg-white;
+      font-size: 1rem;
+      margin-bottom: v.$space-md;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: v.$space-sm;
+    }
+
+    a {
+      color: v.$footer-text;
+      font-size: 0.9rem;
+      transition: v.$transition-fast;
+
+      &:hover {
+        color: v.$primary-color;
+        padding-left: 4px;
+      }
+    }
+  }
+
+  &__contact {
+    h4 {
+      color: v.$bg-white;
+      font-size: 1rem;
+      margin-bottom: v.$space-md;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    p {
+      color: v.$footer-text;
+      font-size: 0.9rem;
+      margin-bottom: v.$space-sm;
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: v.$space-md 0;
+    text-align: center;
+
+    p {
+      color: v.$text-light;
+      font-size: 0.85rem;
+    }
+  }
+}
+
