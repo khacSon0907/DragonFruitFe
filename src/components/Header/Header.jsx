@@ -4,6 +4,10 @@ import logo from "../../assets/logo.png";
 
 const navItems = [
   { label: "Trang chủ", to: "/" },
+  { label: "Đăng nhập", to: "/login" },
+  { label: "Đăng ký", to: "/register" },
+  { label: "Blog", to: "/blog" },
+  { label: "Mây", to: "/may" },
   { label: "Dự đoán giá", to: "/du-doan" },
   { label: "Thống kê", to: "/thong-ke" },
   { label: "Liên hệ", to: "/lien-he" },

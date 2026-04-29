@@ -10,4 +10,7 @@
 
 @use "./layout/header";
 @use "./layout/footer";
+@use "./components/auth";
+@use "./components/blog";
+@use "./components/cloud";
 

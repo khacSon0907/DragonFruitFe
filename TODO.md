@@ -1,18 +1,42 @@
-# Plan: Refactor Header + Footer với React Router + SCSS 7-1
+# TODO: Add Auth, Profile, Blog, Weather UI (API Placeholders - User will add API calls)
 
-## Steps
+## Phase 1: Setup & Deps
 
-1. [ ] Viết abstracts/\_variables.scss
-2. [ ] Viết abstracts/\_mixins.scss
-3. [ ] Viết base/\_reset.scss
-4. [ ] Viết base/\_typography.scss
-5. [ ] Tạo styles/main.scss entry point
-6. [ ] Viết layout/\_header.scss (logo to hơn, giữ tông màu cũ)
-7. [ ] Tạo layout/\_footer.scss
-8. [ ] Refactor components/Header/Header.jsx (NavLink, logo 68px)
-9. [ ] Xóa components/Header/Header.scss
-10. [ ] Tạo components/Footer/Footer.jsx
-11. [ ] Viết layouts/MainLayout.jsx
-12. [ ] Viết routes/index.jsx
-13. [ ] Refactor App.jsx
-14. [ ] Cập nhật main.jsx import SCSS
+- [ ] Install UI deps: `npm i react-hook-form react-hot-toast lucide-react @headlessui/react @heroicons/react date-fns`
+- [ ] Create `src/context/AuthContext.jsx` (mock auth with localStorage)
+- [ ] Update `App.jsx`: Wrap with AuthProvider
+
+## Phase 2: Auth Pages & Routes
+
+- [ ] `src/routes/index.jsx`: Add /login, /register, /forgot-password, /change-password
+- [ ] `src/components/auth/Login.jsx` (form + mock Google)
+- [ ] `src/components/auth/Register.jsx`
+- [ ] `src/components/auth/ForgotPassword.jsx`
+- [ ] `src/components/auth/ChangePassword.jsx`
+
+## Phase 3: Profile & Header Update
+
+- [ ] `src/components/Profile/Profile.jsx` (mock edit)
+- [ ] `src/components/Header/Header.jsx`: Auth nav/dropdown
+
+## Phase 4: Blog Features
+
+- [ ] Routes: /blog, /blog/new, /blog/:id
+- [ ] `src/components/Blog/BlogList.jsx` (mock data)
+- [ ] `src/components/Blog/BlogForm.jsx`
+- [ ] `src/components/Blog/BlogPost.jsx`
+
+## Phase 5: Weather
+
+- [ ] `src/components/Weather/WeatherCard.jsx` (mock Binh Thuan data)
+- [ ] Integrate into /du-doan
+
+## Phase 6: Utils & Final
+
+- [ ] ProtectedRoute HOC
+- [ ] Protect profile/blog create
+- [ ] Toasts, spinners
+- [ ] SCSS updates
+- [ ] Test responsiveness
+
+**Start with Phase 1 after deps install.**

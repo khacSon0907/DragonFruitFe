@@ -1,0 +1,81 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/mixins" as m;
+
+.blog-page {
+  padding: 3rem 0;
+  @include m.container;
+
+  &__hero {
+    max-width: 700px;
+    margin-bottom: 2rem;
+
+    span {
+      display: inline-flex;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: v.$primary-color;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2rem, 2.4vw, 3rem);
+      color: v.$text-dark;
+    }
+
+    p {
+      margin: 0;
+      color: v.$text-light;
+      line-height: 1.75;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 1.5rem;
+
+    @include m.respond-to(md) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+
+.blog-card {
+  padding: 1.75rem;
+  background: v.$bg-white;
+  border: 1px solid #e2e8f0;
+  border-radius: v.$radius-lg;
+  box-shadow: v.$shadow-sm;
+  transition: v.$transition;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  &__meta {
+    font-size: 0.85rem;
+    color: v.$text-light;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.15rem;
+    color: v.$text-dark;
+  }
+
+  p {
+    margin: 0 0 1.5rem;
+    color: v.$text-light;
+    line-height: 1.75;
+  }
+
+  .button--secondary {
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    color: v.$text-dark;
+  }
+}

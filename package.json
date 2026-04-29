@@ -10,8 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.10",
+    "@heroicons/react": "^2.2.0",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^1.12.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "react-hook-form": "^7.74.0",
+    "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.14.2",
     "sass": "^1.99.0"
   },

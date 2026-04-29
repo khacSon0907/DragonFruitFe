@@ -1,7 +1,22 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
+import Login from "../components/auth/Login";
+import Register from "../components/auth/Register";
+import Blog from "../components/blog/Blog";
+import CloudPage from "../components/cloud/CloudPage";
 
 const router = createBrowserRouter([
+  // 👉 ROUTE KHÔNG DÙNG LAYOUT
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+
+  // 👉 ROUTE DÙNG MAIN LAYOUT
   {
     path: "/",
     element: <MainLayout />,
@@ -11,36 +26,29 @@ const router = createBrowserRouter([
         element: (
           <div style={{ padding: "2rem", textAlign: "center" }}>
             <h2>Trang chủ</h2>
-            <p>Chào mừng đến với Hệ thống Dự đoán Giá Thanh Long Bình Thuận.</p>
+            <p>Chào mừng đến với hệ thống.</p>
           </div>
         ),
       },
       {
         path: "du-doan",
-        element: (
-          <div style={{ padding: "2rem", textAlign: "center" }}>
-            <h2>Dự đoán giá</h2>
-            <p>Nội dung dự đoán giá sẽ được hiển thị tại đây.</p>
-          </div>
-        ),
+        element: <div>Dự đoán giá</div>,
       },
       {
         path: "thong-ke",
-        element: (
-          <div style={{ padding: "2rem", textAlign: "center" }}>
-            <h2>Thống kê</h2>
-            <p>Nội dung thống kê sẽ được hiển thị tại đây.</p>
-          </div>
-        ),
+        element: <div>Thống kê</div>,
       },
       {
         path: "lien-he",
-        element: (
-          <div style={{ padding: "2rem", textAlign: "center" }}>
-            <h2>Liên hệ</h2>
-            <p>Thông tin liên hệ sẽ được hiển thị tại đây.</p>
-          </div>
-        ),
+        element: <div>Liên hệ</div>,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
+      },
+      {
+        path: "may",
+        element: <CloudPage />,
       },
     ],
   },
