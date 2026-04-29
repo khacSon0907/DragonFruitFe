@@ -4,8 +4,6 @@ import logo from "../../assets/logo.png";
 
 const navItems = [
   { label: "Trang chủ", to: "/" },
-  { label: "Đăng nhập", to: "/login" },
-  { label: "Đăng ký", to: "/register" },
   { label: "Blog", to: "/blog" },
   { label: "Mây", to: "/may" },
   { label: "Dự đoán giá", to: "/du-doan" },
@@ -43,6 +41,12 @@ export default function Header() {
           </ul>
         </nav>
 
+        <div className="header__actions">
+          <NavLink to="/login" className="header__login-btn">
+            Đăng nhập
+          </NavLink>
+        </div>
+
         <button
           className="header__toggle"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -67,6 +71,15 @@ export default function Header() {
               </NavLink>
             </li>
           ))}
+          <li>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "active" : "")}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Đăng nhập
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

@@ -35,8 +35,8 @@ export default function Footer() {
 
         <div className="footer__contact">
           <h4>Liên hệ</h4>
-          <p>Email: support@dragonfruit.vn</p>
-          <p>Điện thoại: 0909 123 456</p>
+          <p>Email: creatine09072004@gmail.com</p>
+          <p>Điện thoại: 0937519120</p>
           <p>Địa chỉ: Bình Thuận, Việt Nam</p>
         </div>
       </div>
