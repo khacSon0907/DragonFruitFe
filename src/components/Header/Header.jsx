@@ -82,6 +82,10 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+
+      {isMenuOpen && (
+        <div className="header__overlay" onClick={() => setIsMenuOpen(false)} />
+      )}
     </header>
   );
 }
