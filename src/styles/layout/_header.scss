@@ -11,8 +11,16 @@
 
   &__container {
     @include m.container;
-    @include m.flex-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
     height: 80px;
+    gap: 1rem;
+
+    @include m.respond-to(md) {
+      gap: 2rem;
+      grid-template-columns: auto 1fr auto auto;
+    }
   }
 
   &__brand {
@@ -53,6 +61,7 @@
 
   &__nav {
     display: none;
+    justify-self: center;
 
     @include m.respond-to(md) {
       display: block;
@@ -64,6 +73,7 @@
       gap: 2rem;
       margin: 0;
       padding: 0;
+      justify-content: center;
     }
 
     a {
@@ -100,11 +110,12 @@
   }
 
   &__actions {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 1rem;
 
     @include m.respond-to(md) {
+      display: flex;
       margin-left: auto;
       margin-right: 1rem;
     }

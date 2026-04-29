@@ -74,7 +74,7 @@ export default function Header() {
           <li>
             <NavLink
               to="/login"
-              className={({ isActive }) => (isActive ? "active" : "")}
+              className={`header__login-btn ${({ isActive }) => (isActive ? "active" : "")}`}
               onClick={() => setIsMenuOpen(false)}
             >
               Đăng nhập
