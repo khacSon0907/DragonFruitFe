@@ -29,7 +29,12 @@ function UserMenu({ user, onLogout }) {
   }, []);
 
   const initials = user?.fullName
-    ? user.fullName.split(" ").slice(-2).map((w) => w[0]).join("").toUpperCase()
+    ? user.fullName
+        .split(" ")
+        .slice(-2)
+        .map((w) => w[0])
+        .join("")
+        .toUpperCase()
     : "U";
 
   return (
@@ -53,8 +58,12 @@ function UserMenu({ user, onLogout }) {
         <span className="user-menu__name">{user?.fullName}</span>
         <svg
           className={`user-menu__chevron ${open ? "is-open" : ""}`}
-          width="16" height="16" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" strokeWidth="2"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
         >
           <polyline points="6 9 12 15 18 9" />
         </svg>
@@ -72,13 +81,19 @@ function UserMenu({ user, onLogout }) {
 
           <button
             className="user-menu__item"
-            onClick={() => { navigate("/profile"); setOpen(false); }}
+            onClick={() => {
+              navigate("/profile");
+              setOpen(false);
+            }}
           >
             👤 Thông tin cá nhân
           </button>
           <button
             className="user-menu__item"
-            onClick={() => { navigate("/change-password"); setOpen(false); }}
+            onClick={() => {
+              navigate("/change-password");
+              setOpen(false);
+            }}
           >
             🔒 Đổi mật khẩu
           </button>
@@ -87,7 +102,10 @@ function UserMenu({ user, onLogout }) {
 
           <button
             className="user-menu__item user-menu__item--danger"
-            onClick={() => { onLogout(); setOpen(false); }}
+            onClick={() => {
+              onLogout();
+              setOpen(false);
+            }}
           >
             🚪 Đăng xuất
           </button>
@@ -153,9 +171,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="header__actions">
-          {renderActions()}
-        </div>
+        <div className="header__actions">{renderActions()}</div>
 
         <button
           className="header__toggle"
@@ -169,6 +185,53 @@ export default function Header() {
       </div>
 
       <nav className={`header__mobile-nav ${isMenuOpen ? "is-open" : ""}`}>
+        {!loading && user && (
+          <div className="header__mobile-user">
+            <div className="header__mobile-user-header">
+              {user?.avatarUrl ? (
+                <img
+                  src={user.avatarUrl}
+                  alt={user.fullName}
+                  className="header__mobile-user-avatar"
+                />
+              ) : (
+                <div className="header__mobile-user-avatar header__mobile-user-avatar--initials">
+                  {user?.fullName
+                    ? user.fullName
+                        .split(" ")
+                        .slice(-2)
+                        .map((w) => w[0])
+                        .join("")
+                        .toUpperCase()
+                    : "U"}
+                </div>
+              )}
+              <div className="header__mobile-user-info">
+                <p className="header__mobile-user-name">{user?.fullName}</p>
+                <p className="header__mobile-user-email">{user?.email}</p>
+              </div>
+            </div>
+            <div className="header__mobile-user-divider" />
+            <div className="header__mobile-user-actions">
+              <NavLink
+                to="/profile"
+                className="header__mobile-user-item"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                👤 Thông tin cá nhân
+              </NavLink>
+              <NavLink
+                to="/change-password"
+                className="header__mobile-user-item"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                🔒 Đổi mật khẩu
+              </NavLink>
+            </div>
+            <div className="header__mobile-user-divider" />
+          </div>
+        )}
+
         <ul>
           {navItems.map((item) => (
             <li key={item.label}>
@@ -182,14 +245,16 @@ export default function Header() {
             </li>
           ))}
           <li>
-            {!loading && (
-              user ? (
+            {!loading &&
+              (user ? (
                 <button
-                  className="header__login-btn"
-                  style={{ width: "100%", border: "none", cursor: "pointer" }}
-                  onClick={() => { handleLogout(); setIsMenuOpen(false); }}
+                  className="header__mobile-logout"
+                  onClick={() => {
+                    handleLogout();
+                    setIsMenuOpen(false);
+                  }}
                 >
-                  Đăng xuất
+                  🚪 Đăng xuất
                 </button>
               ) : (
                 <NavLink
@@ -199,17 +264,13 @@ export default function Header() {
                 >
                   Đăng nhập
                 </NavLink>
-              )
-            )}
+              ))}
           </li>
         </ul>
       </nav>
 
       {isMenuOpen && (
-        <div
-          className="header__overlay"
-          onClick={() => setIsMenuOpen(false)}
-        />
+        <div className="header__overlay" onClick={() => setIsMenuOpen(false)} />
       )}
     </header>
   );
