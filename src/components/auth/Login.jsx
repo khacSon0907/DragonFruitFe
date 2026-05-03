@@ -1,8 +1,13 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import logo from "../../assets/logo.png";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const { login } = useAuthContext();
+
   const {
     register,
     handleSubmit,
@@ -10,8 +15,18 @@ export default function Login() {
   } = useForm();
 
   const onSubmit = async (values) => {
-    await new Promise((resolve) => setTimeout(resolve, 400));
-    console.log("Đăng nhập:", values);
+    try {
+      await login({
+        identifier: values.identifier,
+        password: values.password,
+      });
+      toast.success("Đăng nhập thành công!");
+      navigate("/");
+    } catch (error) {
+      const message =
+        error.response?.data?.message || "Đăng nhập thất bại. Thử lại!";
+      toast.error(message);
+    }
   };
 
   const handleGoogleLogin = () => {
@@ -40,25 +55,23 @@ export default function Login() {
       <div className="auth-page__card">
         <div className="auth-page__card-header">
           <h2>Thông tin đăng nhập</h2>
-          <p>Nhập email và mật khẩu để tiếp tục.</p>
+          <p>Nhập email hoặc tên đăng nhập và mật khẩu để tiếp tục.</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <label>
-            Email
+            Email hoặc tên đăng nhập
             <input
-              type="email"
-              placeholder="example@email.com"
-              {...register("email", {
-                required: "Nhập email.",
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Email không hợp lệ.",
-                },
+              type="text"
+              placeholder="example@email.com hoặc username"
+              {...register("identifier", {
+                required: "Nhập email hoặc tên đăng nhập.",
               })}
             />
-            {errors.email && (
-              <span className="auth-page__error">{errors.email.message}</span>
+            {errors.identifier && (
+              <span className="auth-page__error">
+                {errors.identifier.message}
+              </span>
             )}
           </label>
 
