@@ -221,8 +221,10 @@
   }
 
   &__mobile-user {
-    padding: v.$space-lg;
-    border-bottom: 2px solid #f1f5f9;
+    padding: v.$space-md v.$space-lg;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.03), rgba(59, 130, 246, 0.03));
+    margin-bottom: v.$space-md;
   }
 
   &__mobile-user-header {
@@ -230,14 +232,17 @@
     align-items: center;
     gap: v.$space-md;
     margin-bottom: v.$space-md;
+    padding-bottom: v.$space-md;
   }
 
   &__mobile-user-avatar {
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+    border: 3px solid v.$primary-color;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
 
     &--initials {
       display: flex;
@@ -246,21 +251,23 @@
       background: linear-gradient(135deg, v.$primary-color, v.$accent-color);
       color: #fff;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.25rem;
+      border: 3px solid v.$primary-color;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
     }
   }
 
   &__mobile-user-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
     flex: 1;
     min-width: 0;
   }
 
   &__mobile-user-name {
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: v.$text-dark;
     margin: 0;
     overflow: hidden;
@@ -269,7 +276,7 @@
   }
 
   &__mobile-user-email {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: v.$text-light;
     margin: 0;
     overflow: hidden;
@@ -279,35 +286,43 @@
 
   &__mobile-user-divider {
     height: 1px;
-    background: #f1f5f9;
-    margin: v.$space-md 0;
+    background: #e2e8f0;
   }
 
   &__mobile-user-actions {
     display: flex;
     flex-direction: column;
     gap: 0;
+    margin-top: v.$space-md;
   }
 
   &__mobile-user-item {
-    display: block;
-    padding: v.$space-md;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem v.$space-md;
     text-decoration: none;
     color: v.$text-dark;
     font-weight: 500;
     font-size: 0.95rem;
     border-radius: v.$radius-sm;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
 
     &:hover {
-      background: #f8fafc;
+      background: #f0f9ff;
+      border-left-color: v.$primary-color;
+      color: v.$primary-color;
+    }
+
+    &:active {
+      background: #e0f2fe;
     }
   }
 
   &__mobile-logout {
-    display: block;
-    width: 100%;
-    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem v.$space-md;
     background: none;
     border: none;
     text-align: left;
@@ -315,11 +330,19 @@
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
-    border-radius: v.$radius-md;
-    transition: background 0.2s ease;
+    border-radius: v.$radius-sm;
+    transition: all 0.2s ease;
+    width: 100%;
+    border-left: 4px solid transparent;
+    margin-top: v.$space-md;
 
     &:hover {
       background: #fef2f2;
+      border-left-color: #ef4444;
+    }
+
+    &:active {
+      background: #fee2e2;
     }
   }
 
